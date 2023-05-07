@@ -49,8 +49,8 @@ function draw() {
   if(gameState===PLAY){
     
     //Call fruits and Monster function
-    fruits();
-    Monster();
+    fruits(); //each 80 frame we get 1 random fruit
+    Monster(); //each 200 frames we get 1 monster
     
     // Move sword with mouse
     knife.y=World.mouseY;
@@ -60,7 +60,7 @@ function draw() {
     if(fruitGroup.isTouching(knife)){
       fruitGroup.destroyEach();
       
-      // knifeSwooshSound.play();
+      knifeSwooshSound.play()
       // knifeSwooshSound.play;
       // knifeSwooshSound();
       // knifeSwooshSoundplay();
@@ -69,7 +69,8 @@ function draw() {
       // score=score;
       // score=+2;
       // score=2;
-      // score=score+2;
+      //score+=2;
+      score=score+2;
 
     }
     else
@@ -78,7 +79,7 @@ function draw() {
       if(monsterGroup.isTouching(knife)){
         gameState=END;
         //gameover sound
-        gameOverSound.play()
+        gameOverSound.play();
         
         fruitGroup.destroyEach();
         monsterGroup.destroyEach();
@@ -116,16 +117,16 @@ function Monster(){
 function fruits(){
   if(World.frameCount%80===0){
     fruit=createSprite(400,200,20,20);
-    fruit.x = 0    
+    fruit.x = 0   
+ 
   //Increase the velocity of fruit after score 4 
-
-      // fruit.velocityX= (7+(score/4));
-      // fruit.velocityY= (7+(score));
+      fruit.velocityX= (7+(score/4));
+      //fruit.velocityY= (7+(score));
       // fruit.velocity= (7+(score/4));
       // fruit.velocityX= (7);
      
     fruit.scale=0.2;
-     //fruit.debug=true;
+     fruit.debug=true;
      r=Math.round(random(1,4));
     if (r == 1) {
       fruit.addImage(fruit1);
@@ -137,8 +138,8 @@ function fruits(){
       fruit.addImage(fruit4);
     }
     
-    fruit.y=Math.round(random(50,550));
    
+    fruit.y=Math.round(random(50,550));
     
     fruit.setLifetime=100;
     
